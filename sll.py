@@ -207,4 +207,27 @@ class SingleLinkedList:
 
     def join_duplicates(self):
         if self.head is None:
-            
+            print("No hay duplicados")       
+        else:
+            values=set()
+            previous=None
+            current = self.head
+            while current is not None:
+                if current.value is values:
+                    previous.next=current.next
+                else:
+                    values.add(current.value)
+                    previous=current
+                current=current.next
+
+    def remove_duplicates(self):
+        if self.head is None:
+            print("No hay duplicados")       
+        else:
+            values=set()
+            previous=None
+            current = self.head
+            while current is not None:
+                if current.value is values:
+                    self.delete_node_sll_pop()
+
