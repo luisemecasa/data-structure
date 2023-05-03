@@ -56,7 +56,7 @@ class SingleLinkedList:
 
     def delete_node_sll_pop(self):
         # 1. validar si la lista esta vacia
-        # 2. validar si la lista tiene un unico nodo
+        # 2. validar si la listgia tiene un unico nodo
         # 3. Si tiene mas de un nodo eliminar el nodo que es la cola de la lista
         # 4. asignar el nodo anterior como la nueva cola de la lista
         if self.length==0:
@@ -151,6 +151,15 @@ class SingleLinkedList:
                     return IndexError("Index out of range")
                 new_node.next = previous_node.next
                 previous_node.next = new_node
+    def remove_node_value(self,value):
+            current=self.head
+            if current==value:
+                current=current.next
+            else:
+                while current is not value:
+                    current=current.next
+                current.next=value.next
+    
 
     def remove_node_index(self, index):
         if index == 1:
@@ -229,5 +238,8 @@ class SingleLinkedList:
             current = self.head
             while current is not None:
                 if current.value is values:
-                    self.delete_node_sll_pop()
-
+                    self.remove_node_value(current)
+                else:
+                    values.add(current.value)
+                    previous=current
+                current=current.next
